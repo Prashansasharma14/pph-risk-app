@@ -32,11 +32,28 @@ with col2:
     prolonged = st.selectbox("Prolonged Labor", ["No", "Yes"])
     multiple = st.selectbox("Multiple Pregnancy", ["No", "Yes"])
 
+st.markdown("---")
+
+st.subheader("Additional Risk Factors")
+
+col3, col4 = st.columns(2)
+
+with col3:
+    bmi = st.number_input("BMI", 15.0, 40.0)
+    prev_pph = st.selectbox("Previous PPH", ["No", "Yes"])
+
+with col4:
+    bp = st.selectbox("Hypertension / Preeclampsia", ["No", "Yes"])
+    placenta = st.selectbox("Placenta Previa / Accreta", ["No", "Yes"])
+
 # Convert inputs
 prev_lscs = 1 if prev_lscs == "Yes" else 0
 induction = 1 if induction == "Yes" else 0
 prolonged = 1 if prolonged == "Yes" else 0
 multiple = 1 if multiple == "Yes" else 0
+prev_pph = 1 if prev_pph == "Yes" else 0
+bp = 1 if bp == "Yes" else 0
+placenta = 1 if placenta == "Yes" else 0
 
 st.markdown("---")
 
