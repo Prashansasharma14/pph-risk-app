@@ -86,7 +86,6 @@ if st.button("🔍 Predict Risk"):
 st.markdown(
     "<p style='text-align: center; font-size: 12px;'>⚠️ For clinical decision support only. Not a substitute for medical judgment.</p>",
     unsafe_allow_html=True
-    st.caption("Version 1.0 | HemoraAI")
 )
 
 st.markdown(
