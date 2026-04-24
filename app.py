@@ -88,6 +88,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+st.caption("Version 1.0 | HemoraAI")
 st.markdown(
     "<p style='text-align: center;'>Developed by Dr. Prashansa Sharma</p>",
     unsafe_allow_html=True
