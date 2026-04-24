@@ -5,7 +5,6 @@ import pickle
 # Page config
 st.markdown("<h1 style='text-align: center;'>🩺 HemoraAI</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center;'>AI-powered PPH Risk Prediction</p>", unsafe_allow_html=True)
-st.info("Designed to assist early identification of postpartum hemorrhage risk in resource-limited settings.")
 
 # Load model
 model = pickle.load(open('pph_model.pkl', 'rb'))
@@ -45,12 +44,7 @@ if st.button("🔍 Predict Risk"):
 
     input_data = np.array([[age, parity, hb, prev_lscs, induction, prolonged, multiple]])
     
-   with st.spinner("Analyzing patient risk..."):
-    prob = model.predict_proba(input_data)[0][1]
-       if hb < 7:
-    st.warning("Severe anemia detected — high clinical concern.")
-if parity >= 4:
-    st.warning("Grand multiparity — increased PPH risk.")
+prob = model.predict_proba(input_data)[0][1]
 
     st.markdown("---")
 
