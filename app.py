@@ -3,7 +3,8 @@ import numpy as np
 import pickle
 
 # Page config
-st.set_page_config(page_title="PPH Risk AI", page_icon="🩺", layout="centered")
+st.markdown("<h1 style='text-align: center;'>🩺 HemoraAI</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center;'>AI-powered PPH Risk Prediction</p>", unsafe_allow_html=True)
 
 # Load model
 model = pickle.load(open('pph_model.pkl', 'rb'))
