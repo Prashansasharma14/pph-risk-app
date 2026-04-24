@@ -43,14 +43,22 @@ st.markdown("---")
 if st.button("🔍 Predict Risk"):
 
     input_data = np.array([[age, parity, hb, prev_lscs, induction, prolonged, multiple]])
-    
-prob = model.predict_proba(input_data)[0][1]
+
+    # Prediction with spinner
+    with st.spinner("Analyzing patient risk..."):
+        prob = model.predict_proba(input_data)[0][1]
+
+    # Clinical flags
+    if hb < 7:
+        st.warning("Severe anemia detected — high clinical concern.")
+
+    if parity >= 4:
+        st.warning("Grand multiparity — increased PPH risk.")
 
     st.markdown("---")
+    st.subheader("📊 Risk Assessment")
 
     # Risk display
-    st.markdown("## 📊 Risk Assessment")
-
     if prob < 0.3:
         st.success(f"🟢 Low Risk ({round(prob*100,1)}%)")
         st.info("Routine monitoring recommended.")
@@ -69,7 +77,8 @@ prob = model.predict_proba(input_data)[0][1]
         • Monitor closely postpartum  
         """)
 
-    st.markdown("---")
+    # Confidence line
+    st.caption(f"Model confidence: {round(prob*100,1)}% probability of PPH")
 
 # Footer
 st.markdown(
