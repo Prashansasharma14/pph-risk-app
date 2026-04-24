@@ -62,19 +62,21 @@ if st.button("🔍 Predict Risk"):
 
     input_data = np.array([[age, parity, hb, prev_lscs, induction, prolonged, multiple]])
 
-    # Prediction with spinner
     with st.spinner("Analyzing patient risk..."):
         prob = model.predict_proba(input_data)[0][1]
-  st.markdown("### 🧾 Patient Summary")
 
-st.write(f"""
-Patient Summary:
-- Age: {age}
-- Hb: {hb}
-- BMI: {bmi}
-- Hypertension: {'Yes' if bp else 'No'}
-- Previous PPH: {'Yes' if prev_pph else 'No'}
-""")
+    # Patient Summary
+    st.markdown("### 🧾 Patient Summary")
+
+    st.write(f"""
+    Patient Summary:
+    - Age: {age}
+    - Hb: {hb}
+    - BMI: {bmi}
+    - Hypertension: {'Yes' if bp else 'No'}
+    - Previous PPH: {'Yes' if prev_pph else 'No'}
+    """)
+
     # Clinical flags
     if hb < 7:
         st.warning("Severe anemia detected — high clinical concern.")
@@ -86,7 +88,6 @@ Patient Summary:
     st.subheader("📊 Risk Assessment")
 
     # Risk display
-    st.subheader("Predicted Risk of Postpartum Hemorrhage")
     if prob < 0.3:
         st.success(f"🟢 Low Risk ({round(prob*100,1)}%)")
         st.info("Routine monitoring recommended.")
@@ -105,9 +106,7 @@ Patient Summary:
         • Monitor closely postpartum  
         """)
 
-    # Confidence line
     st.caption(f"Model confidence: {round(prob*100,1)}% probability of PPH")
-
 # Footer
 st.markdown(
     "<p style='text-align: center; font-size: 12px;'>⚠️ For clinical decision support only. Not a substitute for medical judgment.</p>",
