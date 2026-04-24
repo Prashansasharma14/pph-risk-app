@@ -65,14 +65,16 @@ if st.button("🔍 Predict Risk"):
     # Prediction with spinner
     with st.spinner("Analyzing patient risk..."):
         prob = model.predict_proba(input_data)[0][1]
-   st.markdown("### 🧾 Patient Summary")(f"""
+  st.markdown("### 🧾 Patient Summary")
+
+st.write(f"""
 Patient Summary:
 - Age: {age}
 - Hb: {hb}
 - BMI: {bmi}
 - Hypertension: {'Yes' if bp else 'No'}
 - Previous PPH: {'Yes' if prev_pph else 'No'}
-""") 
+""")
     # Clinical flags
     if hb < 7:
         st.warning("Severe anemia detected — high clinical concern.")
