@@ -17,6 +17,7 @@ st.markdown("---")
 
 # Input Card
 st.subheader("📋 Patient Information")
+st.caption("Prediction based on clinical parameters including hemoglobin, parity, and labor characteristics.")
 
 col1, col2 = st.columns(2)
 
@@ -59,6 +60,7 @@ if st.button("🔍 Predict Risk"):
     st.subheader("📊 Risk Assessment")
 
     # Risk display
+    st.subheader("Predicted Risk of Postpartum Hemorrhage")
     if prob < 0.3:
         st.success(f"🟢 Low Risk ({round(prob*100,1)}%)")
         st.info("Routine monitoring recommended.")
@@ -84,6 +86,7 @@ if st.button("🔍 Predict Risk"):
 st.markdown(
     "<p style='text-align: center; font-size: 12px;'>⚠️ For clinical decision support only. Not a substitute for medical judgment.</p>",
     unsafe_allow_html=True
+    st.caption("Version 1.0 | HemoraAI")
 )
 
 st.markdown(
